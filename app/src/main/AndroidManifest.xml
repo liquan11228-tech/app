@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="1"
+    android:versionName="1.0"
+    android:compileSdkVersion="33"
+    android:compileSdkVersionCodename="13"
+    platformBuildVersionCode="33"
+    platformBuildVersionName="13">
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="33"/>
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true"/>
+    <uses-feature
+        android:name="android.hardware.nfc.hce"
+        android:required="true"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <application
+        android:theme="@style/AppTheme.NoActionBar"
+        android:label="Apple-NFC"
+        android:icon="@drawable/logo"
+        android:allowBackup="false"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:requestLegacyExternalStorage="true">
+        <service
+            android:name="com.pay.app.WebSocketService"
+            android:exported="false"/>
+        <service
+            android:name="com.pay.app.CardEmulationService"
+            android:permission="android.permission.BIND_NFC_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.nfc.cardemulation.action.HOST_APDU_SERVICE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.nfc.cardemulation.host_apdu_service"
+                android:value=""
+                android:resource="@xml/aid_list"/>
+        </service>
+        <activity
+            android:name="com.pay.app.LoginActivity"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pay.app.CardLoadingActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+    </application>
+</manifest>
+
