@@ -20,7 +20,7 @@
         android:layout_height="match_parent">
         <ImageView
             android:layout_gravity="center"
-            android:id="@+id/image"
+            android:id="@+id/expand_activities_button_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:scaleType="fitCenter"
@@ -40,7 +40,7 @@
         android:layout_height="match_parent">
         <ImageView
             android:layout_gravity="center"
-            android:id="@+id/image"
+            android:id="@+id/default_activity_button_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:scaleType="fitCenter"
